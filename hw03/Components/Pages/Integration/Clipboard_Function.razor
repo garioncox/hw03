@@ -1,0 +1,14 @@
+﻿@page "/clipboard"
+
+<button class="btn btn-outline-primary" @onclick="() => { 
+    Clipboard.Default.SetTextAsync(null); 
+    hasText = false; 
+}">Clear Clipboard</button>
+
+<ul>
+    <li class="my-3">Clipboard has text: @hasText</li>
+</ul>
+
+@code {
+    bool hasText = true;
+}

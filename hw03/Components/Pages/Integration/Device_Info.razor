@@ -1,0 +1,27 @@
+﻿@page "/device_info"
+
+<button class="btn btn-outline-primary" @onclick="UpdateLabels">Refresh Info</button>
+<ul>
+    <li class="my-3">Device type: @DeviceTypeLabel</li>
+    <li class="my-3">Device is Virtual: @isVirtual</li>
+</ul>
+
+@code {
+    string DeviceTypeLabel = "";
+    bool isVirtual = DeviceInfo.Current.DeviceType switch
+    {
+        DeviceType.Physical => false,
+        DeviceType.Virtual => true,
+        _ => false
+    };
+
+    public void UpdateLabels()
+    {
+        DeviceTypeLabel = GetDeviceType();
+    }
+
+    public string GetDeviceType()
+    {
+        return DeviceInfo.Current.Idiom.ToString();
+    }
+}

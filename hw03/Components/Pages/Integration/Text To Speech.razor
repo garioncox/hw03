@@ -1,0 +1,12 @@
+﻿@page "/ttspeech"
+
+<input type="text" class="form-control" aria-label="Enter Word to Speak..." @bind="userInput">
+<button class="btn btn-outline-primary" @onclick="Speak">Speak!</button>
+
+@code {
+    string userInput = "";
+    public async void Speak()
+    {
+        await TextToSpeech.Default.SpeakAsync(userInput);
+    }
+}

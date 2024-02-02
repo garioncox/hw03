@@ -1,0 +1,26 @@
+﻿@page "/convert"
+
+<input type="text" class="form-control" aria-label="Enter Farenheit..." @bind="userInput">
+<button class="btn btn-outline-primary" @onclick="ConvertToC">Convert to Celsius!</button>
+
+<p>@output</p>
+
+@code {
+    string userInput = "";
+    string output = "";
+
+    void ConvertToC()
+    {
+        try
+        {
+            double x = UnitConverters.FahrenheitToCelsius(Convert.ToInt32(userInput));
+            output = $"Celsius: {Convert.ToString(x)}";
+        }
+        catch
+        {
+            output = "Error";
+        }
+    }
+}
+
+@* Don't judge too harsh.. I did this last minute.. *@

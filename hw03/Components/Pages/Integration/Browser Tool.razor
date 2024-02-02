@@ -1,0 +1,14 @@
+﻿@page "/browser"
+
+<input type="text" class="form-control" aria-label="Enter Term to Search..." @bind="userInput">
+<button class="btn btn-outline-primary" @onclick="GoogleSearch">Search!</button>
+
+@code {
+    string userInput = "";
+
+    public async void GoogleSearch()
+    {
+        Uri uri = new Uri($"https://www.google.com/search?&q={userInput}");
+        await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+    }
+}

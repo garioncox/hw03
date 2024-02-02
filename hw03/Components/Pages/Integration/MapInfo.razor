@@ -1,0 +1,21 @@
+﻿@page "/map"
+
+<button class="btn btn-outline-primary" @onclick="OpenMap">View Snow College!</button>
+
+@code {
+    string userInput = "";
+    public async Task OpenMap()
+    {
+        var location = new Location(39.3612, -111.5829);
+        var options = new MapLaunchOptions { Name = "Snow College" };
+
+        try
+        {
+            await Map.Default.OpenAsync(location, options);
+        }
+        catch (Exception ex)
+        {
+            // No map application available to open
+        }
+    }
+}
